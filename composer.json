@@ -1,0 +1,25 @@
+{
+    "name": "fraank/view-counter",
+    "description": "",
+    "authors": [
+        {
+            "name": "Frank Cieslik",
+            "email": "frank.cieslik@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/controllers",
+            "src/migrations",
+            "src/models"
+        ],
+        "psr-0": {
+            "Fraank\\ViewCounter\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
