@@ -19,8 +19,7 @@ class ViewCounterServiceProvider extends ServiceProvider {
    */
   public function boot()
   {
-    $this->package('fraank/view-counter');
-    include __DIR__.'/../../routes.php';
+    include __DIR__.'/Http/routes.php';
   }
 
   /**

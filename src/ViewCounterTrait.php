@@ -4,6 +4,11 @@ namespace Fraank\ViewCounter;
 
 trait ViewCounterTrait {
 
+  public function scopeMostLiked($query)
+  {
+      return $query->hasMany('Counter')->whereObjectId($this->id)->whereClassName(snake_case(get_class($this)))->like_counter;
+  }
+
   public function counter()
   {
     if(!isset($this->counter))
@@ -18,7 +23,6 @@ trait ViewCounterTrait {
   {
     return $this->hasMany('\Fraank\ViewCounter\UserCounter', 'object_id')->where('class_name', snake_case(get_class($this)));
   }
-
 
   /**
    * Return authentificated users who viewed we know
