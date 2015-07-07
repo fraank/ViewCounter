@@ -16,9 +16,7 @@
   },
   "autoload": {
     "classmap": [
-      "src/controllers",
-      "src/migrations",
-      "src/models"
+      "src"
     ],
     "psr-0": {
       "Fraank\\ViewCounter\\": "src/"
