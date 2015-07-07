@@ -1,24 +1,27 @@
 {
-    "name": "fraank/view-counter",
-    "description": "",
-    "authors": [
-        {
-            "name": "Frank Cieslik",
-            "email": "frank.cieslik@gmail.com"
-        }
-    ],
-    "require": {
-        "php": ">=5.4.0",
-        "illuminate/support": "5.0.*"
-    },
-    "autoload": {
-        "classmap": [
-            "src/controllers",
-            "src/migrations",
-            "src/models"
-        ],
-        "psr-0": {
-            "Fraank\\ViewCounter\\": "src/"
-        }
+  "name": "fraank/view-counter",
+  "description": "A view and like counter extension for your laravel project.",
+  "license": "MIT",
+  "homepage": "https://github.com/fraank/ViewCounter",
+  "keywords": [ "counter", "likes", "views" ],
+  "authors": [
+    {
+      "name": "Frank Cieslik",
+      "email": "frank.cieslik@gmail.com"
     }
+  ],
+  "require": {
+    "php": ">=5.4.0",
+    "illuminate/support": "5.0.*"
+  },
+  "autoload": {
+    "classmap": [
+      "src/controllers",
+      "src/migrations",
+      "src/models"
+    ],
+    "psr-0": {
+      "Fraank\\ViewCounter\\": "src/"
+    }
+  }
 }
