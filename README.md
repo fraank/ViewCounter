@@ -17,10 +17,23 @@ composer require fraank/view-counter
 Add the service provider in `app/config/app.php`:
 
 ```php
-'Fraank\ViewCounter\ViewCounterServiceProvider',
+Fraank\ViewCounter\ViewCounterServiceProvider::class,
 ```
 
 The service provider will register an interface for your models to use view_counter and like_couter functionality.
+
+
+To create the basic tables you have to provide the migation files:
+
+```json
+php artisan vendor:publish
+```
+
+Now you can migrate:
+
+```json
+php artisan migrate
+```
 
 
 Now you can register the like and view functionality in your model:

@@ -20,6 +20,12 @@ class ViewCounterServiceProvider extends ServiceProvider {
   public function boot()
   {
     include __DIR__.'/Http/routes.php';
+    
+    // add migration files to load via artisan vendor:publish
+    $this->publishes([
+      realpath(__DIR__.'/migrations') => $this->app->databasePath().'/migrations',
+    ]);
+
   }
 
   /**
