@@ -18,7 +18,7 @@
     "classmap": [
       "src"
     ],
-    "psr-0": {
+    "psr-4": {
       "Fraank\\ViewCounter\\": "src/"
     }
   }

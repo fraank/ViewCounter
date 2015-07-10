@@ -1,9 +1,11 @@
 <?php
 
 namespace Fraank\ViewCounter;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\ServiceProvider as LaravelServiceProvider;
 
-class ViewCounterServiceProvider extends ServiceProvider {
+class ViewCounterServiceProvider extends LaravelServiceProvider {
+
+  use \Illuminate\Console\AppNamespaceDetectorTrait;
 
   /**
    * Indicates if loading of the provider is deferred.
@@ -19,13 +21,9 @@ class ViewCounterServiceProvider extends ServiceProvider {
    */
   public function boot()
   {
-    include __DIR__.'/Http/routes.php';
-    
-    // add migration files to load via artisan vendor:publish
-    $this->publishes([
-      realpath(__DIR__.'/migrations') => $this->app->databasePath().'/migrations',
-    ]);
-
+    $this->handleMigrations();
+    $this->handleTranslations();
+    $this->handleRoutes();
   }
 
   /**
@@ -35,7 +33,11 @@ class ViewCounterServiceProvider extends ServiceProvider {
    */
   public function register()
   {
-    
+    include __DIR__.'/Http/routes.php';
+    // print_r($this->getAppNamespace());
+    // print_r($this->app); exit;
+
+    $this->app->make('Fraank\ViewCounter\LikeController');
   }
 
   /**
@@ -47,6 +49,27 @@ class ViewCounterServiceProvider extends ServiceProvider {
   {
     // Register events for view and like
     return array();
+  }
+
+  private function handleTranslations() {
+    $this->loadTranslationsFrom('packagename', __DIR__.'/../src/lang');
+  }
+
+  private function handleViews() {
+    $this->loadViewsFrom('packagename', __DIR__.'/../views');
+    $this->publishes([
+      __DIR__.'/../views' => base_path('resources/views/fraank/view-counter')
+    ]);
+  }
+
+  private function handleMigrations() {
+    $this->publishes([
+      realpath(__DIR__.'/migrations') => $this->app->databasePath().'/migrations',
+    ]);
+  }
+
+  private function handleRoutes() {
+    include __DIR__.'/Http/routes.php';
   }
 
 }
