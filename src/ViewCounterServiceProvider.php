@@ -34,9 +34,6 @@ class ViewCounterServiceProvider extends LaravelServiceProvider {
   public function register()
   {
     include __DIR__.'/Http/routes.php';
-    // print_r($this->getAppNamespace());
-    // print_r($this->app); exit;
-
     $this->app->make('Fraank\ViewCounter\LikeController');
   }
 

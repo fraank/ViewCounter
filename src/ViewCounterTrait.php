@@ -4,9 +4,28 @@ namespace Fraank\ViewCounter;
 
 trait ViewCounterTrait {
 
-  public function scopeMostLiked($query)
+  /**
+   * Return the most liked content
+   *
+   * @return Integer
+   */
+  public function scopeMostLiked($query, $limit = false)
   {
-      return $query->hasMany('Counter')->whereObjectId($this->id)->whereClassName(snake_case(get_class($this)))->like_counter;
+    return $query->leftJoin('counter','counter.object_id','=',$this->getTable().'.id')
+      ->whereClassName(snake_case(get_class($this)))
+      ->orderBy('counter.like_counter', 'DESC');
+  }
+
+  /**
+   * Return the most viewed content
+   *
+   * @return Integer
+   */
+  public function scopeMostViewed($query, $limit = false)
+  {
+    return $query->leftJoin('counter','counter.object_id','=',$this->getTable().'.id')
+      ->whereClassName(snake_case(get_class($this)))
+      ->orderBy('counter.view_counter', 'DESC');
   }
 
   public function counter()
