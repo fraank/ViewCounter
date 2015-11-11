@@ -13,6 +13,7 @@ Install using composer:
 ```json
 composer require fraank/view-counter
 ```
+While the package is not stable, please make sure you added it as dev: Open "composer.json" manually and add "fraank/view-counter": "dev-master" into require. 
 
 Add the service provider in `app/config/app.php`:
 
